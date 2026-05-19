@@ -36,8 +36,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Copy PDFs to dist
-        run: cp public/resume-zh.pdf public/resume-en.pdf dist/ || true
+      - name: Copy PDFs and images to dist
+        run: |
+          cp public/resume-zh.pdf public/resume-en.pdf dist/ || true
+          cp -r public/images dist/ || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

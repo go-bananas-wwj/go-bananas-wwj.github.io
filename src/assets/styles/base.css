@@ -16,6 +16,7 @@ body {
   background-color: var(--color-bg);
   line-height: 1.6;
   font-size: 15px;
+  overflow-x: hidden;
 }
 
 a {
@@ -25,7 +26,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 ul, ol {
@@ -44,37 +45,39 @@ img {
 }
 
 .section {
-  padding: 72px 0;
+  padding: 80px 0;
+  position: relative;
 }
 
 .section-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 36px;
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .card {
   background: var(--color-bg-soft);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 28px;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: var(--font-mono);
   background: var(--color-accent-soft);
   color: var(--color-accent-hover);
@@ -84,13 +87,44 @@ img {
 
 .tag:hover {
   border-color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.gradient-mesh {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradient-mesh::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.gradient-mesh::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 48px 0;
+    padding: 56px 0;
   }
   .section-title {
-    font-size: 20px;
+    font-size: 22px;
   }
 }

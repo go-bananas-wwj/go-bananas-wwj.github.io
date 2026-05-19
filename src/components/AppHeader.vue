@@ -11,6 +11,9 @@
         <router-link to="/resume" class="nav-link" :class="{ active: $route.path === '/resume' }">
           {{ isZh ? '简历' : 'Resume' }}
         </router-link>
+        <router-link to="/notes" class="nav-link" :class="{ active: $route.path.startsWith('/notes') }">
+          {{ isZh ? '随记' : 'Notes' }}
+        </router-link>
         <LanguageSwitch />
       </nav>
     </div>
@@ -35,7 +38,7 @@ const { isVisible } = useScrollHeader();
   right: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border-light);
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -48,7 +51,7 @@ const { isVisible } = useScrollHeader();
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 64px;
 }
 
 .logo {
@@ -57,24 +60,25 @@ const { isVisible } = useScrollHeader();
 }
 
 .logo-name {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 16px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .nav-link {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
   position: relative;
+  padding: 4px 0;
 }
 
 .nav-link:hover,
@@ -85,11 +89,11 @@ const { isVisible } = useScrollHeader();
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--color-accent);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-warm));
   border-radius: 2px;
 }
 
